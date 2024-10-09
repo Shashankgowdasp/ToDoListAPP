@@ -4,6 +4,7 @@ on:
     branches: [master]
   push:
     branches: [master]
+      workflow_dispatch:   # Allows you to manually trigger the workflow in GitHub
 
 jobs:
   build:
