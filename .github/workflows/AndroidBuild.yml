@@ -1,9 +1,9 @@
 name: AndroidBuild
 on:
   pull_request:
-    branches: [main]
+    branches: [main]  # Ensure this matches our branch name
   push:
-    branches: [main]
+    branches: [main]  # Ensure this matches our branch name
 
 jobs:
   build:
@@ -19,11 +19,26 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v3.13.0
         with:
-          java-version: '8'
+          java-version: '8'  # Change this if you need a different Java version
           distribution: 'adopt'
 
       - name: Build with Gradle
         run: ./gradlew build
+
+      - name: Run Unit Tests
+        run: ./gradlew test  # Run unit tests
+
+      - name: Run Instrumentation Tests
+        run: ./gradlew connectedAndroidTest  # Run instrumentation tests (requires emulator)
+
+      - name: Run Lint Checks
+        run: ./gradlew lint  # Run lint checks
+
+      - name: Run Static Code Analysis
+        run: ./gradlew check  # Run static code analysis
+
+      - name: List APK Output Directory
+        run: ls app/build/outputs/apk/debug/  # List APK files
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.3
