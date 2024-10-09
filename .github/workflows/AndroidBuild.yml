@@ -28,8 +28,8 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test  # Run unit tests
 
-      - name: Run Instrumentation Tests
-        run: ./gradlew connectedAndroidTest  # Run instrumentation tests (requires emulator)
+      #- name: Run Instrumentation Tests
+      #  run: ./gradlew connectedAndroidTest  # Run instrumentation tests (requires emulator)
 
       - name: Run Lint Checks
         run: ./gradlew lint  # Run lint checks
